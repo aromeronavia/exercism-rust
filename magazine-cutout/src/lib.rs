@@ -4,27 +4,20 @@
 
 use std::collections::HashMap;
 
-pub fn can_construct_note(magazine: &[&str], note: &[&str]) -> bool {
+pub fn build_map(mut acc: HashMap<&'static str, i8>, word: &&'static str) -> HashMap<&'static str, i8>{
+    if !acc.contains_key(word) {
+        acc.insert(word, 1);
+    } else {
+        acc.insert(word, acc[word] + 1);
+    }
+    acc
+}
+pub fn can_construct_note(magazine: &[&'static str], note: &[&'static str]) -> bool {
     let mut magazine_map: HashMap<&str, i8> = HashMap::new();
-    let magazine_words = magazine.iter().fold(magazine_map, |mut acc, word| {
-        if !acc.contains_key(word) {
-            acc.insert(word, 1);
-        } else {
-            acc.insert(word, acc[word] + 1);
-        }
-        acc
-    });
+    let magazine_words = magazine.iter().fold(magazine_map, build_map);
 
     let mut note_map: HashMap<&str, i8> = HashMap::new();
-    let note_words = note.iter().fold(note_map, |mut acc, word| {
-        if !acc.contains_key(word) {
-            acc.insert(word, 1);
-        } else {
-            acc.insert(word, acc[word] + 1);
-        }
-
-        acc
-    });
+    let note_words = note.iter().fold(note_map, build_map);
 
     note_words.iter().fold(true, |acc, (word, value)| {
         // println!("{}-{}-{:?}-{:?}", word, value, magazine_words.get(word), Some(value));
