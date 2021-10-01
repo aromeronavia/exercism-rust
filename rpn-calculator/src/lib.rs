@@ -44,7 +44,7 @@ pub fn evaluate(inputs: &[CalculatorInput]) -> Option<i32> {
     });
 
     if vector.len() == 1 {
-        Some(vector[0]);
+        return Some(vector[0]);
     } else if vector.len() > 1 {
         return None
     }
