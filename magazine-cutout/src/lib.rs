@@ -20,11 +20,10 @@ pub fn can_construct_note(magazine: &[&'static str], note: &[&'static str]) -> b
     let note_words = note.iter().fold(note_map, build_map);
 
     note_words.iter().fold(true, |acc, (word, value)| {
-        // println!("{}-{}-{:?}-{:?}", word, value, magazine_words.get(word), Some(value));
         if magazine_words.get(word) < Some(value) {
-            return acc && false;
+            acc && false
+        } else {
+            acc && true
         }
-
-        return acc && true;
     })
 }
