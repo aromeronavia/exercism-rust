@@ -1,8 +1,6 @@
 pub fn reverse(input: &str) -> String {
-    let mut inverted_string: Vec<String> = Vec::new();
-    for i in input.chars().rev() {
-        inverted_string.push(i.to_string())
-    }
-
-    inverted_string.join("")
+    input.chars().rev().fold(Vec::new(), |mut acc, character| {
+        acc.push(character.to_string());
+        acc
+    }).join("")
 }
