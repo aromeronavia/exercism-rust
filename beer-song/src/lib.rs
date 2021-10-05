@@ -20,7 +20,7 @@ pub fn get_phrase(i: i32, is_last: bool) -> String {
         let plural_second = if i - 1 > 1 { "s" } else { "" };
 
         format!("{} bottles of beer on the wall, {} bottles of beer.\nTake one down and pass it around, {} bottle{} of beer on the wall.\n{}", i, i, i-1, plural_second, if is_last {""} else {"\n"})
-    } else if i == 1{
+    } else if i == 1 {
         let plural_first = if i > 1 { "s" } else { "" };
 
         let phrase = format!("{} bottle{} of beer on the wall, {} bottle{} of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n\n", i, plural_first, i, plural_first);
