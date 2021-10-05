@@ -1,7 +1,5 @@
 /// Check a Luhn checksum.
 pub fn is_valid(code: &str) -> bool {
-    println!("INPUT {}", code);
-
     let number = code
         .chars()
         .filter(|x| !x.is_whitespace())
@@ -17,7 +15,6 @@ pub fn is_valid(code: &str) -> bool {
     }
 
     let sum = number.iter().rev().enumerate().fold(0, |acc, (index, x)| {
-        println!("acc: {}", acc);
         if index % 2 == 1 {
             let mut product = x * 2;
             if product > 9 {
